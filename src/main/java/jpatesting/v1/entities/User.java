@@ -1,22 +1,31 @@
-package jpatesting.v1.persistence;
+package jpatesting.v1.entities;
 
+import org.hibernate.annotations.ForeignKey;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDto {
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String username;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
-    private List<String> telephones = new ArrayList<String>();
 
-    public List<String> getTelephones() {
-        return telephones;
-    }
-
-    public void setTelephones(List<String> telephones) {
-        this.telephones = telephones;
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    @ForeignKey(name = "fk_telephones_users")
+    private List<Telephone> telephones = new ArrayList<Telephone>();
 
     public long getId() {
         return id;
@@ -48,5 +57,13 @@ public class UserDto {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Telephone> getTelephones() {
+        return telephones;
+    }
+
+    public void setTelephones(List<Telephone> telephones) {
+        this.telephones = telephones;
     }
 }

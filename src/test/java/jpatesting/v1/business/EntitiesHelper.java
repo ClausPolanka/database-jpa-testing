@@ -1,12 +1,12 @@
 package jpatesting.v1.business;
 
-import jpatesting.v1.persistence.Telephone;
-import jpatesting.v1.persistence.User;
-import jpatesting.v1.persistence.UserDto;
+import jpatesting.v1.entities.Telephone;
+import jpatesting.v1.entities.UserDto;
+import jpatesting.v1.entities.User;
 
 import java.util.List;
 
-import static jpatesting.v1.persistence.Telephone.Type;
+import static jpatesting.v1.entities.Telephone.Type;
 import static org.junit.Assert.*;
 
 public final class EntitiesHelper {

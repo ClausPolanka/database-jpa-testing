@@ -1,4 +1,4 @@
-package jpatesting.v1.persistence;
+package jpatesting.v1.entities;
 
 import javax.persistence.*;
 

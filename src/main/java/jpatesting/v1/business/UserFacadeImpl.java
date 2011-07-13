@@ -1,10 +1,9 @@
 package jpatesting.v1.business;
 
-import jpatesting.v1.business.UserFacade;
-import jpatesting.v1.persistence.Telephone;
-import jpatesting.v1.persistence.User;
+import jpatesting.v1.entities.User;
+import jpatesting.v1.entities.Telephone;
 import jpatesting.v1.persistence.UserDao;
-import jpatesting.v1.persistence.UserDto;
+import jpatesting.v1.entities.UserDto;
 
 import java.util.List;
 

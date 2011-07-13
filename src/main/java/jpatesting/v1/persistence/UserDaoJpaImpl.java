@@ -1,5 +1,7 @@
 package jpatesting.v1.persistence;
 
+import jpatesting.v1.entities.User;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
