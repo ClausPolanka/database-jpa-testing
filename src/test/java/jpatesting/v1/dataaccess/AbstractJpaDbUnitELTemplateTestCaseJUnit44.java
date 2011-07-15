@@ -83,8 +83,7 @@ public abstract class AbstractJpaDbUnitELTemplateTestCaseJUnit44 extends Abstrac
     public static IDataSet getReplacedDataSet(String name) throws Exception {
         InputStream inputStream = AbstractJpaDbUnitTestCase.class.getResourceAsStream(name);
         assertNotNull("file " + name + " not found in classpath", inputStream);
-        Reader reader = new InputStreamReader(inputStream);
-        final FlatXmlDataSet dataSet = new ELAwareFlatXmlDataSet(reader);
+        final FlatXmlDataSet dataSet = new ELAwareFlatXmlDataSet(new InputStreamReader(inputStream));
         final ReplacementDataSet replacementDataSet = new ReplacementDataSet(dataSet);
         replacementDataSet.addReplacementObject("[NULL]", null);
         return replacementDataSet;

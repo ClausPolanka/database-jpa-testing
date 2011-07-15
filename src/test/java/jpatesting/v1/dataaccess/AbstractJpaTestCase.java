@@ -19,7 +19,6 @@ public abstract class AbstractJpaTestCase {
     private static EntityManagerFactory entityManagerFactory;
     protected static Connection connection;
     protected EntityManager em;
-    private EntityManager entityManager;
 
     @BeforeClass
     public static void setupDatabase() throws Exception {
