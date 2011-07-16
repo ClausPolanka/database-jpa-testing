@@ -4,6 +4,7 @@ import jpatesting.v1.entities.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 public class UserDaoJpaImpl implements UserDao {
     private EntityManager entityManager;
@@ -13,13 +14,20 @@ public class UserDaoJpaImpl implements UserDao {
     }
 
     public User getUserById(long id) {
-        return entityManager.find(User.class, id);
+        String jql = "select user from User user left join fetch user.telephones where id = ?";
+        Query query = entityManager.createQuery(jql);
+        query.setParameter(1, id);
+        @SuppressWarnings("unchecked")
+        List<User> users = query.getResultList();
+        return users.isEmpty() ? null : (User) users.get(0);
     }
 
     public void deleteUser(long id) {
-        String jql = "delete User where id = ?";
-        Query query = entityManager.createQuery(jql);
-        query.setParameter(1, id);
-        query.executeUpdate();
+        User user = getUserById(id);
+        entityManager.remove(user);
+    }
+
+    public void setEntityManager(EntityManager em) {
+        this.entityManager = em;
     }
 }
